@@ -88,7 +88,7 @@ def jksb(driver):
     logging.info("点击下一步")
     driver.find_element_by_xpath('//*[@id="form_command_bar"]/li[1]').click()
 
-    date = find_element_by_name("fieldHSJCrq")
+    date = driver.find_element_by_name("fieldHSJCrq")
     yesterday = (datetime.date.today() + datetime.timedelta(days=-1)).strftime('%Y%m%d')
     date.send_keys(yesterday)
     
