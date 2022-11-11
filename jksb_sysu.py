@@ -8,7 +8,7 @@ from util import get_img
 from retrying import retry
 import ddddocr
 import logging
-import datetime
+#import datetime
 
 # 失败后随机 1-3s 后重试，最多 10 次
 @retry(wait_random_min=1000, wait_random_max=3000, stop_max_attempt_number=10)
@@ -88,8 +88,8 @@ def jksb(driver):
     logging.info("点击下一步")
     driver.find_element_by_xpath('//*[@id="form_command_bar"]/li[1]').click()
 
-    yesterday = (datetime.date.today() + datetime.timedelta(days=-1)).strftime('%Y%m%d')
-    driver.find_element_by_xpath('//*[@id="V1_CTRL224"]').send_keys(yesterday)
+    #yesterday = (datetime.date.today() + datetime.timedelta(days=-1)).strftime('%Y%m%d')
+    #driver.find_element_by_xpath('//*[@id="V1_CTRL224"]').send_keys(yesterday)
     
     wait.until(expected_conditions.text_to_be_present_in_element((By.XPATH, "//*[@id='form_command_bar']/li[1]"), '提交'))
     logging.info("提交健康申报")
