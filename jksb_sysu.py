@@ -88,7 +88,7 @@ def jksb(driver):
     logging.info("点击下一步")
     driver.find_element_by_xpath('//*[@id="form_command_bar"]/li[1]').click()
 
-    yesterday = (datetime.date.today() + datetime.timedelta(days=-1)).strftime('%Y%m%d')
+    yesterday = (datetime.date.today() + datetime.timedelta(days=-1)).strftime('%Y-%m-%d')
     try:
         wait.until(expected_conditions.presence_of_element_located(By.XPATH, '//*[@id="V1_CTRL224"]'))
         driver.find_element_by_xpath('//*[@id="V1_CTRL224"]').send_keys(yesterday)
