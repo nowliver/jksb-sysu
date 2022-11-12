@@ -89,9 +89,9 @@ def jksb(driver):
     driver.find_element_by_xpath('//*[@id="form_command_bar"]/li[1]').click()
 
     yesterday = (datetime.date.today() + datetime.timedelta(days=-1)).strftime('%Y%m%d')
-    wait.until(expected_conditions.presence_of_element_located((By.XPATH, '//*[@id="V1_CTRL224"]')
-    date = driver.find_element_by_xpath('//*[@id="V1_CTRL224"]')
-    date.send_keys(yesterday)
+    wait.until(expected_conditions.presence_of_element_located(By.XPATH, '//*[@id="V1_CTRL224"]')
+    driver.find_element_by_xpath('//*[@id="V1_CTRL224"]').send_keys(yesterday)
+    logging.info("日期更新完成")
     
     wait.until(expected_conditions.text_to_be_present_in_element((By.XPATH, "//*[@id='form_command_bar']/li[1]"), '提交'))
     logging.info("提交健康申报")
