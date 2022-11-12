@@ -79,7 +79,7 @@ def jksb(driver):
     wait = WebDriverWait(driver, 30) # timeout in seconds -> 30
 
     try:
-        wait.until(expected_conditions.element_to_be_clickable((By.XPATH, "//*[@id='form_command_bar']/li[1]")) )
+        wait.until(expected_conditions.element_to_be_clickable((By.XPATH, "//*[@id='form_command_bar']/li[1]")))
         logging.info('打开健康申报成功')
     except:
         logging.error('打开健康申报失败')
@@ -90,8 +90,9 @@ def jksb(driver):
 
     yesterday = (datetime.date.today() + datetime.timedelta(days=-1)).strftime('%Y-%m-%d')
     try:
-        wait.until(expected_conditions.presence_of_element_located(By.XPATH, '//*[@id="V1_CTRL224"]'))
-        driver.find_element_by_xpath('//*[@id="V1_CTRL224"]').send_keys(yesterday)
+        wait.until(expected_conditions.element_to_be_clickable(By.XPATH, "//*[@id='V1_CTRL224']"))
+        logging.info('get!')
+        driver.find_element_by_xpath("//*[@id='V1_CTRL224']").send_keys(yesterday)
         logging.info("日期更新成功")
     except:
         logging.error('日期更新失败')
