@@ -85,12 +85,9 @@ def jksb(driver):
         logging.error('打开健康申报失败')
         raise Exception('打开健康申报失败')
 
+    # 进入表单填写页面
     logging.info("点击下一步")
     driver.find_element_by_xpath('//*[@id="form_command_bar"]/li[1]').click()
-
-    #time.sleep(5)
-    #wait.until(expected_conditions.element_to_be_clickable((By.XPATH, "//*[@id='form_command_bar']/li[1]")) )
-    #等待页面加载
 
     try:
         wait.until(expected_conditions.element_to_be_clickable((By.XPATH, "//*[@id='form_command_bar']/li[1]")) )
@@ -132,4 +129,3 @@ if __name__ == "__main__":
     login(driver,ocr)
     jksb(driver)
     driver.quit()
-
