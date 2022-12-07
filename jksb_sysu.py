@@ -84,11 +84,13 @@ def jksb(driver):
     except:
         logging.error('打开健康申报失败')
         raise Exception('打开健康申报失败')
-
+        
     # 进入表单填写页面
     logging.info("点击下一步")
     driver.find_element_by_xpath('//*[@id="form_command_bar"]/li[1]').click()
     
+'''
+    #不用更新日期喽
     wait.until(expected_conditions.element_to_be_clickable((By.XPATH, "//*[@id='form_command_bar']/li[2]")) ) # 出现终止按钮
 
     logging.info("出现终止按钮，先睡一会")
@@ -107,6 +109,7 @@ def jksb(driver):
     except:
         logging.error('日期更新失败')
         raise Exception('日期更新失败')
+'''
     
     wait.until(expected_conditions.text_to_be_present_in_element((By.XPATH, "//*[@id='form_command_bar']/li[1]"), '提交'))
     logging.info("提交健康申报")
